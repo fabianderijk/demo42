@@ -1,0 +1,198 @@
+// Build Vendor Prefixes
+// Builds css PROPERTIES with vendor prefixes
+//
+// @parameter property
+// @parameter value
+//
+// @dependencies
+//      $default-prefixes (defined in _settings.sass)
+//
+// @example
+//      +bvp( box-shadow, 0px 0px 5px 0px rgba( 0, 0, 0, 0.1 ))
+//
+// @returns
+//      webkit-box-shadow: 0px 0px 5px 0px rgba( 0,0,0,0.1 );
+//      -khtml-box-shadow: 0px 0px 5px 0px rgba( 0,0,0,0.1 );
+//      -moz-box-shadow: 0px 0px 5px 0px rgba( 0,0,0,0.1 );
+//      -ms-box-shadow: 0px 0px 5px 0px rgba( 0,0,0,0.1 );
+//      -o-box-shadow: 0px 0px 5px 0px rgba( 0,0,0,0.1 );
+//      box-shadow: 0px 0px 5px 0px rgba( 0,0,0,0.1 );
+
+=bvp($property, $value...)
+    @each $prefix in $default-prefixes
+        -#{$prefix}-#{$property}: #{$value}
+    #{$property}: #{$value}
+
+// Build Value Vendor Prefixes
+// Builds css properties with VALUES that have vendor prefixes
+//
+// @dependencies
+//      $default-prefixes (defined in _settings.sass)
+// 
+// @example
+//      +vvp( background-image, -o-linear-gradient( top, red 0%, lime 50%, blue 100% ))
+//
+// @returns
+//      background-image: -webkit-linear-gradient(top, red 0%, lime 50%, blue 100%);
+//      background-image: -khtml-linear-gradient(top, red 0%, lime 50%, blue 100%);
+//      background-image: -moz-linear-gradient(top, red 0%, lime 50%, blue 100%);
+//      background-image: -ms-linear-gradient(top, red 0%, lime 50%, blue 100%);
+//      background-image: -o-linear-gradient(top, red 0%, lime 50%, blue 100%);
+
+=bvvp( $property, $value... )    
+    @each $prefix in $default-prefixes
+        #{$property}: -#{$prefix}-#{$value}
+
+// No hover styles for touch devices
+//
+// @dependencies: Modernizr.js library
+=no-touch-hover()
+    html.no-touch &
+        @content
+
+// Hide text within an element
+=hide-text()
+    text-indent: 100%
+    white-space: nowrap
+    overflow: hidden
+    color: transparent
+
+// Linear gradient
+// Can take multiple color-stops to render a gradient. 
+=linear-gradient( $args... )
+    $gradient: ()
+    $pos: nth( $args, 1 )
+    $pos_newsyntax: ()
+
+    @if ($pos != "top") and ($pos != "right") and ($pos != "bottom") and ($pos != "left") and ($pos != "to top") and ($pos != "to right") and ($pos != "to bottom") and ($pos != "to left") 
+        $pos: "top"
+
+    // New Syntax
+    @if $pos == "top" 
+        $pos_newsyntax: "to bottom"
+
+    @else if $pos == "right"
+        $pos_newsyntax: "to left"
+
+    @else if $pos == "bottom"
+        $pos_newsyntax: "to top"
+
+    @else if $pos == "left" 
+        $pos_newsyntax: "to right"
+
+    @each $g in $args
+        @if ($g != "top") and ($g != "right") and ($g != "bottom") and ($g != "left") and ($g != "to top") and ($g != "to right") and ($g != "to bottom") and ($g != "to left")
+            $gradient: append($gradient, $g, comma)
+
+    +bvvp( background-image, linear-gradient( #{$pos}, $gradient) )
+    background-image: #{ "linear-gradient( #{$pos_newsyntax}, #{$gradient} )"}
+
+// Opacity
+=opacity( $value )
+    filter: alpha(opacity= $value * 100 )
+    -moz-opacity: $value
+    -khtml-opacity: $value
+    opacity: $value
+
+// Generates an icon for use in pseudo-elements
+//
+// @dependencies
+//      $fonticons (defined in _settings.sass)
+//      $default-font-size (defined in _settings.sass)
+=icomoon( $name )
+    font-family: 'icomoon'
+    speak: none
+    font-style: normal
+    font-weight: normal
+    font-variant: normal
+    text-transform: none
+    line-height: 1
+    vertical-align: -1px
+    -webkit-font-smoothing: antialiased
+
+    @each $icon in $fonticons
+        $itemname: nth($icon, 1)
+        $char: nth($icon, 2)
+        
+        @if $name == $itemname
+            content: $char
+
+@function calc-grid( $cols: $grid-columns, $include-gutter: false )
+    $guttervalue: 1
+    
+    @if $include-gutter
+        $guttervalue: 0
+
+    @return ($grid-column-width * $cols) + ($grid-gutter-width * ($cols - $guttervalue))
+
+=span-columns($cols, $spacing: true )    
+    width: ($grid-column-width + $grid-gutter-width) * $cols - $grid-gutter-width + px
+    
+    @if $spacing == true 
+        margin-right: $grid-gutter-width + px
+    @else if $spacing == false
+        margin-right: 0
+
+@function calc-fluid-grid( $wrapper-margin: 0, $cols: $grid-columns, $include-gutter: false )
+    $guttervalue: 1
+    
+    @if $include-gutter
+        $guttervalue: 0
+
+    $context-width: ($grid-column-width + $grid-gutter-width) * $grid-columns - $grid-gutter-width
+    $target-width: ($grid-column-width * $cols) + ($grid-gutter-width * ($cols - $guttervalue))
+    
+    @if $wrapper-margin > 0
+        @return ((100% * $target-width) / $context-width) - ((100% * $wrapper-margin) / $master-context-width)
+    @else
+        @return (100% * $target-width) / $context-width 
+
+=span-fluid-columns( $cols, $spacing: true )
+    $context-width: ($grid-column-width + $grid-gutter-width) * $grid-columns - $grid-gutter-width
+    $target-width: ($grid-column-width + $grid-gutter-width) * $cols - $grid-gutter-width
+    
+    width: (100% * $target-width) / $context-width
+
+    @if $spacing == true
+        margin-right: (100% * $grid-gutter-width) / $context-width
+
+=clearfix()
+    &:after
+        content: ""
+        display: table
+        clear: both
+
+=inline-list()
+    margin: 0
+    padding: 0
+    font-size: 0
+
+    li
+        display: inline-block
+        font-size: 100%
+
+@function pxtoem( $pixels )
+    @return (($pixels + 0px) / $default-font-size) + em
+
+
+//=visualize-grid()
+// $grid-columns:      12 
+// $grid-column-width: 54 
+// $grid-gutter-width: 30
+    // $column-width-perc: ($grid-column-width * 100) / calc-grid() + %
+
+    // @for $i from 1 through $grid-columns
+    //     // .#{$class-slug}-#{$i}
+    //     $gradient: red $column-width-perc, white 
+    //     //width: 60px + $i
+
+    
+
+    // background-image: -webkit-linear-gradient(top, #ffffff 0%, #ffffff 8%, #ff0000 8%, #ff0000 16%, #ffffff 16%, #ffffff 24%, #ff0000 24%, #7db9e8 100% );
+
+//     $column-color: green
+    
+//     calc-grid    
+    
+//     +linear-gradient(left, white 0px, white $grid-gutter-width + px, red $grid-gutter-width + px, red $grid-gutter-width + 40px, white 100% )
+//     

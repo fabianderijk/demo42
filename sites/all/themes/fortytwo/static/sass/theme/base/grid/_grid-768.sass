@@ -1,0 +1,86 @@
+$grid-columns:      12
+$grid-column-width: 44
+$grid-gutter-width: 20
+
+$wrapper-fluid-margin: $grid-columns * 2
+
+@media #{$tablet-p}
+    body[class*=responsive]:not([class*=non-responsive]) div.wrapper
+        @if $debug-mode
+            background:
+                image: url(../images/grid-768.png)
+                repeat: repeat-y
+                position: center center
+
+    // normal responsive layout calculations
+    body.responsive:not([class*=non-responsive])
+        div.wrapper
+            width: calc-grid() + px
+
+        footer
+            @if not($footer-full-width)
+                width: calc-grid() + px   
+
+        header
+            @if not($header-full-width)
+                width: calc-grid() + px 
+
+            @if not($header-full-content-width)
+                > *
+                    width: calc-grid() + px
+
+        
+        &.columns-right .content.column
+            +span-columns( 8 )
+        
+        &.columns-middle .sidebar.second,
+        &.columns-middle .content.column,
+        &.columns-left .content.column
+            +span-columns( 8, false )
+
+        &.columns-left .sidebar.first,
+        &.columns-left .sidebar.second,
+        &.columns-middle .sidebar.first            
+            +span-columns( 4 )
+
+        &.columns-right .sidebar.first,
+        &.columns-right .sidebar.second
+            +span-columns( 4, false )
+
+    // fluid responsive layout calculations
+    body.responsive-fluid:not([class*=non-responsive])
+        div.wrapper
+            width: calc-fluid-grid( $wrapper-fluid-margin )
+            
+            @if $debug-mode
+                background-size: 100%
+
+        footer
+            @if not($footer-full-width)
+                width: calc-fluid-grid( $wrapper-fluid-margin )
+
+        header
+            @if not($header-full-width)
+                width: calc-fluid-grid( $wrapper-fluid-margin )
+
+            @if not($header-full-content-width)
+                > *
+                    width: calc-fluid-grid( $wrapper-fluid-margin )
+
+        &.columns-right .content.column
+            +span-fluid-columns( 8 )
+        
+        &.columns-middle .sidebar.second,
+        &.columns-middle .content.column,
+        &.columns-left .content.column
+            +span-fluid-columns( 8, false )
+
+        &.columns-left .sidebar.first,
+        &.columns-left .sidebar.second,
+        &.columns-middle .sidebar.first            
+            +span-fluid-columns( 4 )
+
+        &.columns-right .sidebar.first,
+        &.columns-right .sidebar.second
+            +span-fluid-columns( 4, false )
+

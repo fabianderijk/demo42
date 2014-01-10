@@ -1,0 +1,47 @@
+label.select.prettify
+    @extend a.button
+    display: inline-block
+    position: relative
+    font-weight: normal
+    
+    &.focus
+        border: 1px solid $input-focus-border-color  
+        outline: none
+
+    &:hover
+        border: 1px solid $button-border-hover-color
+        color: $button-font-color
+
+    select
+        bottom: 0
+        cursor: pointer
+        left: 0
+        position: absolute
+        right: 0
+        top: 0
+        width: 100%
+        z-index: 3
+        padding: 0
+        border: 1px solid transparent
+        height: 30px
+
+
+    span
+        display: block
+        white-space: nowrap
+        text-overflow: ellipsis
+        overflow: hidden
+        font-size: $button-font-size
+
+        &:after
+            +icomoon( "caret-down" )
+            padding-left: $icon-spacing
+            font-size: 70%
+            vertical-align: 0px
+        
+    option
+        html.lt-ie9 &
+            width: 100%           
+  
+
+

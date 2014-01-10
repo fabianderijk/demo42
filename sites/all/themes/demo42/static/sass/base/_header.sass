@@ -1,0 +1,38 @@
+header
+    background-image: -webkit-linear-gradient(left, rgba($orient, 0.85), rgba($orient, 0.85) ), url(../images/background-1.jpg)
+    background-image: -khtml-linear-gradient(left, rgba($orient, 0.85), rgba($orient, 0.85) ), url(../images/background-1.jpg)
+    background-image: -moz-linear-gradient(left, rgba($orient, 0.85), rgba($orient, 0.85) ), url(../images/background-1.jpg)
+    background-image: -ms-linear-gradient(left, rgba($orient, 0.85), rgba($orient, 0.85) ), url(../images/background-1.jpg)
+    background-image: -o-linear-gradient(left, rgba($orient, 0.85), rgba($orient, 0.85) ), url(../images/background-1.jpg)
+    background-image: linear-gradient( to right, rgba($orient, 0.85), rgba($orient, 0.85)  ), url(../images/background-1.jpg)
+    background-size: 100% auto
+    +bvp( transition, height 0.5s ease, width 0.5s ease )
+    position: relative
+
+    @media #{$desktop}
+        height: 485px
+
+    @media #{$tablet-l}
+        height: 335px
+
+    div.logo
+        display: inline-block
+        margin: pxtoem(20px) 0 0 pxtoem(40px)
+
+    #system-main-menu
+        position: absolute
+        right: 0
+        top: 0
+
+        @media #{$desktop}
+            font-size: 120%
+
+        @media #{$tablet-l}
+            font-size: 100%
+
+        ul.menu
+            list-style-type: none
+
+            li 
+                display: inline-block
+

@@ -1,0 +1,76 @@
+html, body 
+    height: 100%
+
+a
+    text-decoration: none
+
+div.wrapper
+    position: relative
+    margin: 0 auto
+    +clearfix
+
+    .content.column,
+    .sidebar.first,
+    .sidebar.second
+        margin-bottom: 10px
+
+// Layout with two sidebars and the main column in the middle
+body.columns-middle
+    .content.column
+        float: left
+        
+        @media #{$tablet}
+            float: right
+
+        @media #{$desktop}
+            float: right
+    
+    .sidebar
+        &.first,
+            float: left
+
+        &.second
+            float: right
+
+// Layout with two sidebars and the main column on the right
+body.columns-left
+    .content.column
+        float: right
+
+    .sidebar.first,
+    .sidebar.second
+        float: left
+
+    @media #{$mobile-l}
+        .content.column,
+        .sidebar.first,
+        .sidebar.second
+            float: none
+
+// Layout with two sidebars and the main column on the left
+body.columns-right
+    .content.column
+        float: left
+
+    .sidebar
+        &.first
+            float: left
+
+        &.second
+            float: right
+
+header,
+footer
+    clear: both
+    margin: 0 auto
+
+body
+    &[class*='columns-'].one-sidebar,
+    &.two-sidebars
+        @if $debug-mode
+            .content.column,
+            .sidebar
+                background-color: rgba( red, 0.2 )
+
+h1, h2, h3, h4, h5, h6
+    margin: 0 0 5px 0

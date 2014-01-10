@@ -1,0 +1,61 @@
+$grid-columns:      8 
+$grid-column-width: 47 
+$grid-gutter-width: 12 
+
+$wrapper-fluid-margin: $grid-columns * 2
+
+@media #{$mobile-l}
+    body[class*=responsive]:not([class*=non-responsive]) div.wrapper
+        @if $debug-mode
+            background:
+                image: url(../images/grid-480.png)
+                repeat: repeat-y
+                position: center center
+
+    // normal responsive layout calculations
+    body.responsive:not([class*=non-responsive])
+
+        div.wrapper
+            width: calc-grid() + px
+
+        footer
+            @if not($footer-full-width)
+                width: calc-grid() + px   
+
+        header
+            @if not($header-full-width)
+                width: calc-grid() + px 
+
+            @if not($header-full-content-width)
+                > *
+                    width: calc-grid() + px
+
+        .sidebar.first,
+        .sidebar.second,
+        .content.column
+            +span-columns( 8, false )
+
+    // fluid responsive layout calculations
+    body.responsive-fluid:not([class*=non-responsive])
+        div.wrapper
+            width: calc-fluid-grid( $wrapper-fluid-margin )
+
+            @if $debug-mode
+                background-size: 100%
+
+        footer
+            @if not($footer-full-width)
+                width: calc-fluid-grid( $wrapper-fluid-margin )
+
+        header
+            @if not($header-full-width)
+                width: calc-fluid-grid( $wrapper-fluid-margin )
+
+            @if not($header-full-content-width)
+                > *
+                    width: calc-fluid-grid( $wrapper-fluid-margin )
+
+        .sidebar.first,
+        .sidebar.second,
+        .content.column
+            +span-fluid-columns( 8, false )

@@ -1,0 +1,54 @@
+$grid-columns:      $default-grid-columns
+$grid-column-width: $default-grid-column-width
+$grid-gutter-width: $default-grid-gutter-width
+
+// No need for a media query here, 
+// this is always the base layout
+
+body
+    div.wrapper
+        width: calc-grid() + px
+
+        @if $debug-mode
+            background:
+                image: url(../images/grid-1280.png)
+                repeat: repeat-y
+                position: center center
+
+    footer
+        @if not($footer-full-width)
+            width: calc-grid() + px   
+    
+    header
+        @if not($header-full-width)
+            width: calc-grid() + px
+
+        @if not($header-full-content-width)
+            > *
+                width: calc-grid() + px    
+
+    &.columns-middle .content.column,
+    &.columns-right .content.column
+        +span-columns( 8 )
+    
+    &.columns-left .content.column
+        +span-columns( 8, false )
+
+    &.columns-middle .sidebar.first,
+    &.columns-left .sidebar.first,
+    &.columns-left .sidebar.second,
+    &.columns-right .sidebar.first,
+        +span-columns( 4 )
+
+    &.columns-middle .sidebar.second,
+    &.columns-right .sidebar.second
+        +span-columns( 4, false )
+
+    &.columns-middle
+        .content.column
+            margin-right: calc-grid(4, true) + px
+
+        .sidebar.second
+            position: absolute
+            right: 0
+

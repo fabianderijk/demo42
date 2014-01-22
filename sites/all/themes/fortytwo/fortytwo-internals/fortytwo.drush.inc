@@ -12,7 +12,7 @@ function fortytwo_drush_command() {
   $items = array();
 
   $items['fortytwo'] = array(
-    'description' => 'Create a theme using Fortytwo.',
+    'description' => 'Create a sub theme using Fortytwo.',
     'arguments' => array(
       'name'         => 'A name for your theme.',
       'machine_name' => '[optional] A machine-readable name for your theme.',
@@ -80,7 +80,6 @@ function drush_fortytwo($name = NULL, $machine_name = NULL) {
   drush_op('fortytwo_file_str_replace', $subtheme_info_file, array_keys($alterations), $alterations);
 
   // Replace all occurrences of 'STARTERKIT' with the machine name of sub theme.
-  drush_op('fortytwo_file_str_replace', $subtheme_path . '/theme-settings.php', 'STARTERKIT', $machine_name);
   drush_op('fortytwo_file_str_replace', $subtheme_path . '/template.php', 'STARTERKIT', $machine_name);
 
   // Notify user of the newly created theme.

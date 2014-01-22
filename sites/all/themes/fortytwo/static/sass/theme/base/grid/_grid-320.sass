@@ -1,63 +1,69 @@
+// MOBILE PORTRAIT
+
 $grid-columns:      8
 $grid-column-width: 27
 $grid-gutter-width: 12
 
-$wrapper-fluid-margin: $grid-columns * 2
-
 @media #{$mobile-p}
-    body[class*=responsive]:not([class*=non-responsive]) div.wrapper
-        @if $debug-mode
-            background:
-                image: url(../images/grid-320.png)
-                repeat: repeat-y
-                position: center center
-
-    body.responsive:not([class*=non-responsive])
-
+    // adaptive layout calculations
+    body.layout-adaptive
+        &.show-grid
+            +visualize-grid
+        
+        nav,
+        footer,
+        header,
         div.wrapper
             width: calc-grid() + px
+        
+        // all layouts
+        &.no-sidebars,    
+        &.one-sidebar,
+        &.two-sidebars
+            .sidebar.first,
+            .sidebar.second,
+            .content.column
+                +span-columns( 8, false )
 
-        footer
-            @if not($footer-full-width)
-                width: calc-grid() + px   
-
-        header
-            @if not($header-full-width)
-                width: calc-grid() + px 
-
-            @if not($header-full-content-width)
-                > *
-                    width: calc-grid() + px    
-
-        .sidebar.first,
-        .sidebar.second,
-        .content.column
-            +span-columns( 8, false )
-
-    body.responsive-fluid:not([class*=non-responsive])
+            &.columns-middle
+                .sidebar.second
+                    position: relative
+                    right: auto
+    
+    // fluid layout calculations
+    body.layout-fluid
+        &.show-grid
+            +visualize-grid
+        
+        nav,
+        header,
+        footer,
         div.wrapper
-            width: calc-fluid-grid( $wrapper-fluid-margin )
+            width: calc-fluid-grid( $grid-columns * 2 )
             min-width: calc-grid() + px
+        
+        // 2 sidebar layouts
+        &.two-sidebars
+            .sidebar.first,
+            .sidebar.second,
+            .content.column
+                +span-fluid-columns( 8, false )
 
-            @if $debug-mode
-                background-size: 100%
+        &.columns-middle
+            .sidebar.second
+                position: relative
+                right: auto
 
-        footer
-            @if not($footer-full-width)
-                width: calc-fluid-grid( $wrapper-fluid-margin )
-                min-width: calc-grid() + px
-
-        header
-            @if not($header-full-width)
-                width: calc-fluid-grid( $wrapper-fluid-margin )
-                min-width: calc-grid() + px
-
-            @if not($header-full-content-width)
-                > *
-                    width: calc-fluid-grid( $wrapper-fluid-margin )
-                    min-width: calc-grid() + px
-
-        .sidebar.first,
-        .sidebar.second,
-        .content.column
-            +span-fluid-columns( 8, false )
+        // 1 sidebar layouts and no sidebar layout
+        &.no-sidebars,
+        &.one-sidebar
+            &.columns-right .sidebar.second,
+            &.columns-right .sidebar.first,
+            &.columns-right .content.column,
+            &.columns-middle .content.column,
+            &.columns-left .content.column,
+            &.columns-middle .sidebar.second,
+            &.columns-middle .sidebar.first,
+            &.columns-left .sidebar.first,
+            &.columns-left .sidebar.second
+                +span-fluid-columns( 8, false )

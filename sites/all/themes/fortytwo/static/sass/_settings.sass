@@ -5,18 +5,11 @@ $default-prefixes: webkit, khtml, moz, ms, o
 
 // Font icons using Icomoon font 
 $fonticons: caret-left "\e000", caret-right "\e001", caret-up "\e002", caret-down "\e003", facebook "\e004", twitter "\e005", googleplus "\e006", linkedin "\e007", email "\e008", arrow-right "\e009", arrow-left "\e00a", checked "\e00b", unchecked "\e00c", checked-dot "\e00d"
-
 $icon-spacing: 5px
 
 // Basic colors
 $page-background-color: white
 $page-font-color: #3b3b3b
-
-// color names
-$carrot: #E67E22
-$pumpkin: #D35400
-$asphalt: #34495E
-$midnight: #2C3E50
 
 $default-font-size: 16px
 
@@ -29,6 +22,7 @@ $border-radius: 2px
 // Inputs
 $input-focus-border-color: royalblue
 $input-border-radius: $border-radius
+$webkit-autofill-color: #f0feff
 
 // Buttons
 $button-border-color:       silver
@@ -45,20 +39,15 @@ $fieldset-border-color:     $button-border-color
 $checked-color:             $input-focus-border-color
 $check-icon-color:          grey
 
-// If you alter these values, you probably 
-// have to re-check the media queries
+// default grid values
 $default-grid-columns:      16 
 $default-grid-column-width: 48 
 $default-grid-gutter-width: 30
 
 $master-context-width: ($default-grid-column-width * $default-grid-columns) + ($default-grid-gutter-width * ($default-grid-columns - 1))
 
-// layout options
-$footer-full-width: false
-$header-full-width: false
-$header-full-content-width: true
-
 // media queries
+$mobile: "all and (min-width: 0px) and (max-width: 767px)"
 $mobile-p: "all and (min-width: 0px) and (max-width: 479px)"
 $mobile-l: "all and (min-width: 480px) and (max-width: 767px)"
 
@@ -66,5 +55,4 @@ $tablet: "all and (min-width: 768px) and (max-width: 1247px)"
 $tablet-p: "all and (min-width: 768px) and (max-width: 1001px)"
 $tablet-l: "all and (min-width: 1002px) and (max-width: 1247px)"
  
-$desktop: "all and (min-width: 1248px)"   
-
+$desktop: "all and (min-width: 1248px)"

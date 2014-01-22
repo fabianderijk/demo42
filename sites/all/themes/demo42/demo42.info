@@ -1,16 +1,22 @@
 screenshot  = screenshot.png
-name        = Demo42
-description = Forty Two Sub theme made from the starterkit
+name        = Demo42 theme
+description = Forty Two Sub theme
 
 core        = 7.x
 base theme  = fortytwo
 
 stylesheets[all][] = static/css/main.css
 
+; Ugly hack to prevent the base css from loading
+stylesheets[all][] = static/css/fortytwo.css
+
+scripts[] = static/js/main.js
+
 regions[sidebar_first] = First sidebar
 regions[sidebar_second] = Second sidebar
 regions[highlighted] = Highlighted area
 regions[content] = Content
+regions[navigation] = Navigation
 regions[header] = Header
 regions[page_top] = Page top
 regions[page_bottom] = Page bottom
@@ -38,9 +44,9 @@ settings[ft_breadcrumb_trailing]            = 1
 settings[ft_breadcrumb_title]               = 0
 
 
-; Information added by Drupal.org packaging script on 2014-01-06
+; Information added by Drupal.org packaging script on 2014-01-22
 version = "7.x-1.x-dev"
 core = "7.x"
 project = "fortytwo"
-datestamp = "1389019406"
+datestamp = "1390377206"
 

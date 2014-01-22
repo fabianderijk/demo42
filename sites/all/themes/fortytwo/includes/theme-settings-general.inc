@@ -69,10 +69,10 @@ function _fortytwo_theme_get_layout() {
   );
 
   $options = array(
-    'non-responsive' => t('Not responsive'),
+    'layout-fixed' => t('Fixed (not responsive)'),
     'Responsiveness' => array(
-      'responsive' => t('Responsive'),
-      'responsive-fluid' => t('Fluid responsive'),
+      'layout-adaptive' => t('Adaptive'),
+      'layout-fluid' => t('Fluid'),
     ),
   );
 
@@ -251,15 +251,17 @@ function _fortytwo_theme_get_debuggers() {
   );
   $ret['debug']['ft_show_window_size'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Show window size - appears in the bottom right corner'),
+    '#title' => t('Show window size - appears in the bottom right corner'),    
     '#default_value' => theme_get_setting('ft_show_window_size'),
   );
 
   $ret['debug']['ft_show_grid'] = array(
     '#type'  => 'checkbox',
-    '#title' => t('Show column grid - several when in responsive mode'),
+    '#title' => t('Show column grid(s)'),
+    '#description' => t('matchMedia and SVG capable browser needed (Chrome, Safari or Firefox) to view the debug grid.'),
     '#default_value' => theme_get_setting('ft_show_grid'),
   );
+
   return $ret;
 }
 

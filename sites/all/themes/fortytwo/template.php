@@ -19,8 +19,8 @@ function fortytwo_preprocess_html(&$variables, $hook) {
   load_debuggers();
   $variables['staticpath'] = fortytwo_get_staticpath(TRUE);
   $variables['classes_array'][] = theme_get_setting('ft_layout_style');
-  $grid = theme_get_setting('ft_show_grid');
-  ($grid) ? $variables['classes_array'][] = 'show_grid' : $variables['classes_array'][] = '';
+  $variables['grid'] = theme_get_setting('ft_show_grid');
+  ($variables['grid']) ? $variables['classes_array'][] = 'show-grid' : $variables['classes_array'][] = '';
   $variables['classes_array'][] = theme_get_setting('ft_layout_responsive');
 }
 
@@ -45,7 +45,12 @@ function fortytwo_preprocess_node(&$variables, $hook) {
     $function($variables, $hook);
   }
 
-  $variables['classes_array'] = array($variables['type']);
+  $variables['classes_array'][] = $variables['type'];
+  $classes = array($variables['type']);
+  if (in_array('contextual-links-region', $variables['classes_array'])) {
+    $classes[] = 'contextual-links-region';
+  }
+  $variables['classes_array'] = $classes;
 }
 
 /**
@@ -123,7 +128,11 @@ function fortytwo_breadcrumb($variables) {
  * Clean up the div classes for blocks
  */
 function fortytwo_preprocess_block(&$variables) {
-  $variables['classes_array'] = array('block');
+  $classes = array('block');
+  if (in_array('contextual-links-region', $variables['classes_array'])) {
+    $classes[] = 'contextual-links-region';
+  }
+  $variables['classes_array'] = $classes;
   $variables['block_html_id'] = str_replace('block-', '', $variables['block_html_id']);
 }
 

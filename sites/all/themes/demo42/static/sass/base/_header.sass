@@ -6,33 +6,43 @@ header
     background-image: -o-linear-gradient(left, rgba($orient, 0.85), rgba($orient, 0.85) ), url(../images/background-1.jpg)
     background-image: linear-gradient( to right, rgba($orient, 0.85), rgba($orient, 0.85)  ), url(../images/background-1.jpg)
     background-size: 100% auto
-    +bvp( transition, height 0.5s ease, width 0.5s ease )
+    //+bvp( transition, height 0.5s ease, width 0.5s ease )
     position: relative
 
-    @media #{$desktop}
-        height: 485px
+    height: 485px
 
-    @media #{$tablet-l}
-        height: 335px
+    // @media #{$tablet-l}
+    //     height: 335px
 
     div.logo
         display: inline-block
-        margin: pxtoem(20px) 0 0 pxtoem(40px)
+        margin: pxtoem( 20px, 0, 0, 40px ) 
 
-    #system-main-menu
+    nav
+        display: inline-block
+        width: auto
         position: absolute
-        right: 0
-        top: 0
+        top: 32px
+        right: 60px
 
-        @media #{$desktop}
-            font-size: 120%
+        ul
+            +inline-list
+            display: table
+            font-size: pxtoem( 18px )
 
-        @media #{$tablet-l}
-            font-size: 100%
+            li
+                padding: pxtoem( 6px, 18px )
+                border: 2px solid transparent
+                margin: pxtoem( 0, -2px )
+                
+                a
+                    color: white
+                    display: block
 
-        ul.menu
-            list-style-type: none
+                &.active
+                    +bvp( border-radius, 16px )
+                    border: 2px solid white                    
 
-            li 
-                display: inline-block
+                    a.active
+                        color: white
 

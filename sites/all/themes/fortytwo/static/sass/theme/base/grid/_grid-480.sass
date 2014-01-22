@@ -1,61 +1,70 @@
+// MOBILE LANDSCAPE
+
 $grid-columns:      8 
 $grid-column-width: 47 
 $grid-gutter-width: 12 
 
-$wrapper-fluid-margin: $grid-columns * 2
-
 @media #{$mobile-l}
-    body[class*=responsive]:not([class*=non-responsive]) div.wrapper
-        @if $debug-mode
-            background:
-                image: url(../images/grid-480.png)
-                repeat: repeat-y
-                position: center center
-
-    // normal responsive layout calculations
-    body.responsive:not([class*=non-responsive])
-
+    // adaptive layout calculations
+    body.layout-adaptive
+        &.show-grid
+            +visualize-grid
+        
+        nav,
+        footer,
+        header,
         div.wrapper
-            width: calc-grid() + px
+            width: calc-grid() + px        
+        
+        // all layouts
+        &.no-sidebars,    
+        &.one-sidebar,
+        &.two-sidebars
+            .sidebar.first,
+            .sidebar.second,
+            .content.column
+                +span-columns( 8, false )
 
-        footer
-            @if not($footer-full-width)
-                width: calc-grid() + px   
+            &.columns-middle
+                .sidebar.second
+                    position: relative
+                    right: auto
 
-        header
-            @if not($header-full-width)
-                width: calc-grid() + px 
-
-            @if not($header-full-content-width)
-                > *
-                    width: calc-grid() + px
-
-        .sidebar.first,
-        .sidebar.second,
-        .content.column
-            +span-columns( 8, false )
-
-    // fluid responsive layout calculations
-    body.responsive-fluid:not([class*=non-responsive])
+    // fluid layout calculations
+    body.layout-fluid
+        &.show-grid
+            +visualize-grid
+        
+        nav,
+        header,
+        footer,
         div.wrapper
-            width: calc-fluid-grid( $wrapper-fluid-margin )
+            width: calc-fluid-grid( $grid-columns * 2 )
 
-            @if $debug-mode
-                background-size: 100%
+        // 2 sidebar layouts
+        &.two-sidebars
+            .sidebar.first,
+            .sidebar.second,
+            .content.column
+                +span-fluid-columns( 8, false )
 
-        footer
-            @if not($footer-full-width)
-                width: calc-fluid-grid( $wrapper-fluid-margin )
+            &.columns-middle
+                .sidebar.second
+                    position: relative
+                    right: auto
 
-        header
-            @if not($header-full-width)
-                width: calc-fluid-grid( $wrapper-fluid-margin )
+        // 1 sidebar layouts and no sidebar layout
+        &.no-sidebars,
+        &.one-sidebar
+            &.columns-right .sidebar.second,
+            &.columns-right .sidebar.first,
+            &.columns-right .content.column,
+            &.columns-middle .content.column,
+            &.columns-left .content.column,
+            &.columns-middle .sidebar.second,
+            &.columns-middle .sidebar.first,
+            &.columns-left .sidebar.first,
+            &.columns-left .sidebar.second
+                +span-fluid-columns( 8, false )
+        
 
-            @if not($header-full-content-width)
-                > *
-                    width: calc-fluid-grid( $wrapper-fluid-margin )
-
-        .sidebar.first,
-        .sidebar.second,
-        .content.column
-            +span-fluid-columns( 8, false )

@@ -56,6 +56,31 @@
   <?php print $scripts; ?>
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
+
+<?php if ($grid) : ?>
+  <div id="svg-grid-background">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="1218px" height="100%" enable-background="new 0 0 1218 100%" xml:space="preserve">
+
+      <rect x="0"   fill="#29ABE2" width="5" height="100%"/>
+      <rect x="10"  fill="#29ABE2" width="5" height="100%"/>
+      <rect x="20"  fill="#29ABE2" width="5" height="100%"/>
+      <rect x="30"  fill="#29ABE2" width="5" height="100%"/>
+      <rect x="40"  fill="#29ABE2" width="5" height="100%"/>
+      <rect x="50"  fill="#29ABE2" width="5" height="100%"/>
+      <rect x="60"  fill="#29ABE2" width="5" height="100%"/>
+      <rect x="70"  fill="#29ABE2" width="5" height="100%"/>
+      <rect x="80"  fill="#29ABE2" width="5" height="100%"/>
+      <rect x="90"  fill="#29ABE2" width="5" height="100%"/>
+      <rect x="100" fill="#29ABE2" width="5" height="100%"/>
+      <rect x="110" fill="#29ABE2" width="5" height="100%"/>
+      <rect x="120" fill="#29ABE2" width="5" height="100%"/>
+      <rect x="130" fill="#29ABE2" width="5" height="100%"/>
+      <rect x="140" fill="#29ABE2" width="5" height="100%"/>
+      <rect x="150" fill="#29ABE2" width="5" height="100%"/>
+    </svg>
+  </div>
+<?php endif; ?>
+
   <div id="skip-link">
     <a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
   </div>

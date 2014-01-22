@@ -1,12 +1,5 @@
 $debug-mode: false
 
-// Vendor prefixes
-$default-prefixes: webkit, khtml, moz, ms, o
-
-// Font icons using Icomoon font 
-$fonticons: caret-left "\e000", caret-right "\e001", caret-up "\e002", caret-down "\e003", facebook "\e004", twitter "\e005", googleplus "\e006", linkedin "\e007", email "\e008", arrow-right "\e009", arrow-left "\e00a", checked "\e00b", unchecked "\e00c", checked-dot "\e00d"
-$icon-spacing: 5px
-
 // Basic fonts
 $MerriWeatherSans: "MerriWeatherSans", Helvetica
 $MerriWeatherSerif: "MerriWeatherSerif", Times New Roman
@@ -15,43 +8,77 @@ $MerriWeatherSerif: "MerriWeatherSerif", Times New Roman
 $page-background-color: white
 $page-font-color: #3b3b3b
 
-// color names
-$orient: #28617A
 
+$default-font-size: 16px
 
-$default-font-size: 14px
+// Grid settings
+$default-grid-columns:      16 
+$default-grid-column-width: 48 
+$default-grid-gutter-width: 30
 
-// mark-tag
-// $mark-background-color: yellow
-// $mark-font-color: black
+$master-context-width: ($default-grid-column-width * $default-grid-columns) + ($default-grid-gutter-width * ($default-grid-columns - 1))
 
-$border-radius: 2px
-
-// Inputs
-$input-focus-border-color: royalblue
-// $input-border-radius: $border-radius
-
-// Buttons
-// $button-border-color:       silver
-// $button-border-hover-color: orangered
-// $button-font-color:         darken( $button-border-hover-color, 10% )
-// $button-border-radius:      $border-radius
-// $button-background-color:   whitesmoke
-
-// Fieldset
-// $fieldset-border-color:     $button-border-color
-
-// // radio & checkboxes
-// $checked-color:             $input-focus-border-color
-// $check-icon-color:          grey
+//  The canvas width with the settings above is 1218px, 
+//  if you alter the values, make sure the canvas width
+//  always calculates below 1247px. Otherwise you have to
+//  change the media queries below.
+// 
+//  For example the bootstrap grid system value:
+//  $grid-columns: 12 
+//  $grid-column-width: 75 
+//  $grid-gutter-width: 30
+// 
+//  This will calculate in a canvas width of:
+//  (12 * (75 + 30)) - 30 = 1230px
 
 // media queries
+$mobile: "all and (min-width: 0px) and (max-width: 767px)"
 $mobile-p: "all and (min-width: 0px) and (max-width: 479px)"
 $mobile-l: "all and (min-width: 480px) and (max-width: 767px)"
 
 $tablet: "all and (min-width: 768px) and (max-width: 1247px)"
 $tablet-p: "all and (min-width: 768px) and (max-width: 1001px)"
 $tablet-l: "all and (min-width: 1002px) and (max-width: 1247px)"
-
+ 
 $desktop: "all and (min-width: 1248px)"
 
+// Below are variables that have been preset in the base theme, 
+// if you need to change them, overrule them here
+// ==========================================================================
+
+
+// Color names
+$orient: #28617A
+
+// Default animation duration
+$dd: 0.5s
+
+
+
+// MARK TAG
+// $mark-background-color: yellow
+// $mark-font-color: black
+
+// BORDER RADIUS (used on inputs and buttons)
+// $button-border-radius: 2px
+// $input-border-radius: 2px
+
+// INPUTS
+// $input-focus-border-color: royalblue
+// $input-border-radius: $border-radius
+// $webkit-autofill-color: #f0feff
+
+// BUTTONS
+// $button-border-color:       silver
+// $button-border-hover-color: orangered
+// $button-font-color:         darken( $button-border-hover-color, 10% )
+// $button-border-radius:      $border-radius
+// $button-font-size:          $default-font-size
+// $button-background-color:   whitesmoke
+
+// FIELDSET
+// $fieldset-border-color:     $button-border-color
+
+// RADIO & CHECKBOXES
+// $checked-color:             $input-focus-border-color
+// $check-icon-color:          grey

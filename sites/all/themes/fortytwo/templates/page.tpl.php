@@ -16,6 +16,12 @@
       <?php print render($page['header']); ?>
   </header>
 
+  <?php if ($page['navigation']): ?>
+    <nav>
+      <?php print render($page['navigation']); ?>
+    </nav>
+  <?php endif; ?>
+
   <div class="wrapper">
     <?php if ($breadcrumb): ?>
       <div id="breadcrumb"><?php print $breadcrumb; ?></div>
@@ -36,20 +42,20 @@
       <?php print $feed_icons; ?>
     </section>
 
-    <aside class="column sidebar first <?php if (!isset($page['sidebar_first']) || empty($page['sidebar_first'])) : print 'sidebar-empty'; endif; ?> ">
-      <?php if ($page['sidebar_first']) : ?>
-        <?php print render($page['sidebar_first']); ?>
-      <?php endif; ?>
-    </aside> <!-- /.section, /#sidebar-first -->
+    <?php if ($page['sidebar_first']) : ?>
+      <aside class="column sidebar first">
+          <?php print render($page['sidebar_first']); ?>
+      </aside>
+    <?php endif; ?>
 
-    <aside class="column sidebar second <?php if (!isset($page['sidebar_second']) || empty($page['sidebar_second'])) : print 'sidebar-empty'; endif; ?>">
-      <?php if ($page['sidebar_second']): ?>
+    <?php if ($page['sidebar_second']): ?>
+      <aside class="column sidebar second">
         <?php print render($page['sidebar_second']); ?>
-      <?php endif; ?> 
-    </aside> <!-- /.section, /#sidebar-second -->
+      </aside>
+    <?php endif; ?>
 
   </div>
-  
+
   <footer>
     <?php print render($page['footer']); ?>
   </footer>

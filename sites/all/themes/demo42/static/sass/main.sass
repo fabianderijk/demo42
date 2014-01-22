@@ -1,17 +1,14 @@
-@import "_settings"
+// Does imports from the base fortytwo theme.
+@import "lib/_basicimports"
 
-@import "lib/_mixins"
-@import "lib/_snippets"
-@import "lib/_fonts"
+// Put your own mixins in this file
+@import "lib/_mixins.sass"
 
-@import "lib/grid/_grid-1280"
-@import "lib/grid/_grid-1024"
-@import "lib/grid/_grid-768"
-@import "lib/grid/_grid-480"
-@import "lib/grid/_grid-320"
-
+// Basic layout styling
 @import "base/_layout"
 @import "base/_header"
+@import "base/_footer"
 @import "base/_sidebars"
 
-
+// Specific page styling
+@import "pages/home"

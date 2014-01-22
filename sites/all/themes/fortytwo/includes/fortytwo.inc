@@ -34,42 +34,36 @@ function fortytwo_get_staticpath($addprefix = FALSE) {
 function fortytwo_add_libraries() {
   $staticpath = fortytwo_get_staticpath();
 
-  // Add main.js
-  drupal_add_js($staticpath . 'js/main.js', array('every_page' => TRUE));
-
-  // Add Modrnizer.
-  drupal_add_js($staticpath . 'js/lib/modernizr.js', array('every_page' => TRUE));
-
   $lodash = theme_get_setting('ft_lodash_js');
   if (!empty($lodash)) {
-    drupal_add_js($staticpath . 'js/lib/lodash.js', array('scope' => 'footer', 'every_page' => TRUE));
+    drupal_add_js($staticpath . 'js/lib/lodash.js', array('every_page' => TRUE));
   }
 
   $enquire = theme_get_setting('ft_enquire_js');
   if (!empty($enquire)) {
-    drupal_add_js($staticpath . 'js/lib/matchMedia.js', array('scope' => 'footer', 'every_page' => TRUE));
-    drupal_add_js($staticpath . 'js/lib/matchMedia.addListener.js', array('scope' => 'footer', 'every_page' => TRUE));
-    drupal_add_js($staticpath . 'js/lib/enquire.js', array('scope' => 'footer', 'every_page' => TRUE));
+    drupal_add_js($staticpath . 'js/lib/matchMedia.js', array('every_page' => TRUE));
+    drupal_add_js($staticpath . 'js/lib/matchMedia.addListener.js', array('every_page' => TRUE));
+    drupal_add_js($staticpath . 'js/lib/enquire.js', array('every_page' => TRUE));
   }
 
   $transit = theme_get_setting('ft_transit_js');
   if (!empty($transit)) {
-    drupal_add_js($staticpath . 'js/lib/transit.js', array('scope' => 'footer', 'every_page' => TRUE));
+    drupal_add_js($staticpath . 'js/lib/transit.js', array('every_page' => TRUE));
   }
 
   $placeholder = theme_get_setting('ft_placeholder_js');
   if (!empty($placeholder)) {
-    drupal_add_js($staticpath . 'js/lib/polyfills/placeholder.js', array('scope' => 'footer', 'every_page' => TRUE));
+    drupal_add_js($staticpath . 'js/lib/polyfills/placeholder.js', array('every_page' => TRUE));
   }
 
   $raf = theme_get_setting('ft_raf_js');
   if (!empty($raf)) {
-    drupal_add_js($staticpath . 'js/lib/polyfills/raf.js', array('scope' => 'footer', 'every_page' => TRUE));
+    drupal_add_js($staticpath . 'js/lib/polyfills/raf.js', array('every_page' => TRUE));
   }
 
   $selectbox = theme_get_setting('ft_selectbox_js');
   if (!empty($selectbox)) {
-    drupal_add_js($staticpath . 'js/lib/polyfills/raf.js', array('scope' => 'footer', 'every_page' => TRUE));
+    drupal_add_js($staticpath . 'js/lib/polyfills/raf.js', array('every_page' => TRUE));
   }
 }
 
@@ -114,8 +108,10 @@ function fortytwo_add_head_items() {
  * Load debugging helper files.
  */
 function load_debuggers() {
+  $debug = FALSE;
   // Load window size bookmarklet.
   if (theme_get_setting('ft_show_window_size') === 1) {
+    $debug = TRUE;
     drupal_add_js(fortytwo_get_staticpath() . 'js/plugins/window-size.js', array(
       'type' => 'file',
       'scope' => 'footer',
@@ -124,6 +120,19 @@ function load_debuggers() {
       'cache' => TRUE,
       )
     );
+  }
+  if (theme_get_setting('ft_show_grid') === 1) {
+    $debug = TRUE;
+    drupal_add_js(fortytwo_get_staticpath() . 'js/plugins/gridbackgroundview.js', array(
+      'type' => 'file',
+      'group' => JS_THEME,
+      'preprocess' => TRUE,
+      'cache' => TRUE,
+      )
+    );
+  }
+  if ($debug) {
+    drupal_set_message(t('Please turn of Forty Two debuggers on production websites.'), 'warning');
   }
 }
 

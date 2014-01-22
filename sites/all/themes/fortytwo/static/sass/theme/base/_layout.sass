@@ -1,13 +1,27 @@
-html, body 
-    height: 100%
+div#svg-grid-background
+    display: none
 
-a
-    text-decoration: none
+body.show-grid
+    div#svg-grid-background
+        position: absolute
+        left: 0
+        right: 0
+        bottom: 0
+        top: 0
+        z-index: -1
+        display: block
+
+        > svg
+            margin: 0 auto
+            display: block
+
+            rect
+                fill: rgba( 0, 0, 0, 0.1 )
 
 div.wrapper
     position: relative
     margin: 0 auto
-    +clearfix
+    %clearfix
 
     .content.column,
     .sidebar.first,
@@ -17,20 +31,21 @@ div.wrapper
 // Layout with two sidebars and the main column in the middle
 body.columns-middle
     .content.column
-        float: left
-        
-        @media #{$tablet}
-            float: right
-
-        @media #{$desktop}
-            float: right
-    
+        float: right
+            
     .sidebar
         &.first,
             float: left
 
         &.second
             float: right
+
+    @media #{$mobile}
+        &.layout-fluid,
+        &.layout-adaptive 
+            .content.column,
+            .sidebar.second,
+                float: none
 
 // Layout with two sidebars and the main column on the right
 body.columns-left
@@ -41,11 +56,14 @@ body.columns-left
     .sidebar.second
         float: left
 
+    
     @media #{$mobile-l}
-        .content.column,
-        .sidebar.first,
-        .sidebar.second
-            float: none
+        &.layout-fluid,
+        &.layout-adaptive,
+            .content.column,
+            .sidebar.first,
+            .sidebar.second
+                float: none
 
 // Layout with two sidebars and the main column on the left
 body.columns-right
@@ -59,18 +77,14 @@ body.columns-right
         &.second
             float: right
 
+nav,
 header,
 footer
     clear: both
     margin: 0 auto
 
 body
-    &[class*='columns-'].one-sidebar,
-    &.two-sidebars
-        @if $debug-mode
-            .content.column,
-            .sidebar
-                background-color: rgba( red, 0.2 )
-
-h1, h2, h3, h4, h5, h6
-    margin: 0 0 5px 0
+    @if $debug-mode
+        .content.column,
+        .sidebar
+            background-color: rgba( red, 0.2 )

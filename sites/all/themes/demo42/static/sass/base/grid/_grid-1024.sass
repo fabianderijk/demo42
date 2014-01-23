@@ -1,0 +1,11 @@
+// TABLET LANDSCAPE
+
+$grid-columns:      12 
+$grid-column-width: 54 
+$grid-gutter-width: 30
+
+@media #{$tablet-l}
+    body.layout-fluid
+        header
+            div.block
+                +span-fluid-columns( 8, none )

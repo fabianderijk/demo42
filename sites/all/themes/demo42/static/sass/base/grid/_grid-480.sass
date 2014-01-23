@@ -1,0 +1,10 @@
+// MOBILE LANDSCAPE
+
+$grid-columns:      8 
+$grid-column-width: 47 
+$grid-gutter-width: 12 
+
+@media #{$mobile-l}
+    body.layout-fluid
+        header div.block
+            +span-fluid-columns( 6, none )

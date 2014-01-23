@@ -1199,6 +1199,33 @@ html.lt-ie9 label.select.prettify option {
   width: 100%;
 }
 
+/* line 10, ../sass/base/grid/_grid-1280.sass */
+body.layout-fluid header div.block {
+  width: 61.57635%;
+}
+
+@media all and (min-width: 1002px) and (max-width: 1247px) {
+  /* line 10, ../sass/base/grid/_grid-1024.sass */
+  body.layout-fluid header div.block {
+    width: 65.64417%;
+  }
+}
+@media all and (min-width: 480px) and (max-width: 767px) {
+  /* line 9, ../sass/base/grid/_grid-480.sass */
+  body.layout-fluid header div.block {
+    width: 74.34783%;
+  }
+}
+@media all and (min-width: 0px) and (max-width: 479px) {
+  /* line 10, ../sass/base/grid/_grid-320.sass */
+  body.layout-fluid header nav ul {
+    width: 100%;
+  }
+  /* line 13, ../sass/base/grid/_grid-320.sass */
+  body.layout-fluid header div.block {
+    width: 74%;
+  }
+}
 /* line 1, ../sass/base/_layout.sass */
 html, body {
   height: 100%;
@@ -1232,67 +1259,254 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "MerriWeatherSans", Helvetica;
 }
 
+@media all and (min-width: 1248px) {
+  /* line 16, ../sass/base/_layout.sass */
+  body.show-grid div#svg-grid-background > svg rect {
+    fill: rgba(192, 57, 43, 0.12);
+  }
+}
+@media all and (min-width: 1002px) and (max-width: 1247px) {
+  /* line 16, ../sass/base/_layout.sass */
+  body.show-grid div#svg-grid-background > svg rect {
+    fill: rgba(155, 89, 182, 0.12);
+  }
+}
+@media all and (min-width: 768px) and (max-width: 1001px) {
+  /* line 16, ../sass/base/_layout.sass */
+  body.show-grid div#svg-grid-background > svg rect {
+    fill: rgba(41, 128, 185, 0.12);
+  }
+}
+@media all and (min-width: 480px) and (max-width: 767px) {
+  /* line 16, ../sass/base/_layout.sass */
+  body.show-grid div#svg-grid-background > svg rect {
+    fill: rgba(39, 174, 96, 0.12);
+  }
+}
+@media all and (min-width: 0px) and (max-width: 479px) {
+  /* line 16, ../sass/base/_layout.sass */
+  body.show-grid div#svg-grid-background > svg rect {
+    fill: rgba(241, 196, 15, 0.12);
+  }
+}
+
 /* line 1, ../sass/base/_header.sass */
-header {
-  background-image: -webkit-linear-gradient(left, rgba(40, 97, 122, 0.85), rgba(40, 97, 122, 0.85)), url(../images/background-1.jpg);
-  background-image: -khtml-linear-gradient(left, rgba(40, 97, 122, 0.85), rgba(40, 97, 122, 0.85)), url(../images/background-1.jpg);
-  background-image: -moz-linear-gradient(left, rgba(40, 97, 122, 0.85), rgba(40, 97, 122, 0.85)), url(../images/background-1.jpg);
-  background-image: -ms-linear-gradient(left, rgba(40, 97, 122, 0.85), rgba(40, 97, 122, 0.85)), url(../images/background-1.jpg);
-  background-image: -o-linear-gradient(left, rgba(40, 97, 122, 0.85), rgba(40, 97, 122, 0.85)), url(../images/background-1.jpg);
-  background-image: linear-gradient(to right, rgba(40, 97, 122, 0.85), rgba(40, 97, 122, 0.85)), url(../images/background-1.jpg);
-  background-size: 100% auto;
+body.layout-fluid header {
+  background-image: -webkit-linear-gradient(left, rgba(40, 97, 122, 0.9), rgba(40, 97, 122, 0.9)), url(../images/background-1.jpg);
+  background-image: -khtml-linear-gradient(left, rgba(40, 97, 122, 0.9), rgba(40, 97, 122, 0.9)), url(../images/background-1.jpg);
+  background-image: -moz-linear-gradient(left, rgba(40, 97, 122, 0.9), rgba(40, 97, 122, 0.9)), url(../images/background-1.jpg);
+  background-image: -ms-linear-gradient(left, rgba(40, 97, 122, 0.9), rgba(40, 97, 122, 0.9)), url(../images/background-1.jpg);
+  background-image: -o-linear-gradient(left, rgba(40, 97, 122, 0.9), rgba(40, 97, 122, 0.9)), url(../images/background-1.jpg);
+  background-image: linear-gradient(to right, rgba(40, 97, 122, 0.9), rgba(40, 97, 122, 0.9)), url(../images/background-1.jpg);
+  background-size: cover;
+  background-position: center;
   position: relative;
   height: 485px;
+  -webkit-transition: height 1s ease;
+  -khtml-transition: height 1s ease;
+  -moz-transition: height 1s ease;
+  -ms-transition: height 1s ease;
+  -o-transition: height 1s ease;
+  transition: height 1s ease;
 }
-/* line 17, ../sass/base/_header.sass */
-header div.logo {
+@media all and (min-width: 768px) and (max-width: 1001px) {
+  /* line 1, ../sass/base/_header.sass */
+  body.layout-fluid header {
+    height: 390px;
+  }
+}
+@media all and (min-width: 0px) and (max-width: 767px) {
+  /* line 1, ../sass/base/_header.sass */
+  body.layout-fluid header {
+    height: 370px;
+  }
+}
+/* line 23, ../sass/base/_header.sass */
+body.layout-fluid header div.logo {
+  display: inline-block;
+}
+@media all and (min-width: 0px) and (max-width: 479px) {
+  /* line 23, ../sass/base/_header.sass */
+  body.layout-fluid header div.logo {
+    display: block;
+    padding-top: 0.625em ;
+  }
+}
+/* line 30, ../sass/base/_header.sass */
+body.layout-fluid header div.logo a {
   display: inline-block;
   margin: 1.25em 0em 0em 2.5em ;
+  background-image: url(../images/fortytwo_logo.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 12.0625em ;
+  height: 5.1875em ;
+  -webkit-transition: all 0.5s ease;
+  -khtml-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
-/* line 21, ../sass/base/_header.sass */
-header nav {
+@media all and (min-width: 768px) and (max-width: 1001px) {
+  /* line 30, ../sass/base/_header.sass */
+  body.layout-fluid header div.logo a {
+    font-size: 90%;
+  }
+}
+@media all and (min-width: 480px) and (max-width: 767px) {
+  /* line 30, ../sass/base/_header.sass */
+  body.layout-fluid header div.logo a {
+    font-size: 80%;
+  }
+}
+@media all and (min-width: 0px) and (max-width: 479px) {
+  /* line 30, ../sass/base/_header.sass */
+  body.layout-fluid header div.logo a {
+    font-size: 80%;
+    margin: 0 auto;
+    display: block;
+    background-size: contain;
+    background-position: center;
+  }
+}
+/* line 58, ../sass/base/_header.sass */
+body.layout-fluid header div.logo a img {
+  visibility: hidden;
+}
+/* line 61, ../sass/base/_header.sass */
+body.layout-fluid header div.block {
+  margin: 0 auto;
+  text-align: center;
+  -webkit-transition: font-size 0.5s ease;
+  -khtml-transition: font-size 0.5s ease;
+  -moz-transition: font-size 0.5s ease;
+  -ms-transition: font-size 0.5s ease;
+  -o-transition: font-size 0.5s ease;
+  transition: font-size 0.5s ease;
+  padding-top: 4.6875em ;
+}
+@media all and (min-width: 768px) and (max-width: 1001px) {
+  /* line 61, ../sass/base/_header.sass */
+  body.layout-fluid header div.block {
+    font-size: 80%;
+  }
+}
+@media all and (min-width: 480px) and (max-width: 767px) {
+  /* line 61, ../sass/base/_header.sass */
+  body.layout-fluid header div.block {
+    padding-top: 3.125em ;
+    font-size: 70%;
+  }
+}
+@media all and (min-width: 0px) and (max-width: 479px) {
+  /* line 61, ../sass/base/_header.sass */
+  body.layout-fluid header div.block {
+    font-size: 50%;
+  }
+}
+/* line 78, ../sass/base/_header.sass */
+body.layout-fluid header div.block h2 {
+  font-size: 2em ;
+  text-transform: uppercase;
+  font-family: "MerriWeatherSerif", Times New Roman;
+  letter-spacing: 0.125em ;
+  color: white;
+}
+/* line 85, ../sass/base/_header.sass */
+body.layout-fluid header div.block h2 span {
+  color: #1abb9c;
+}
+/* line 88, ../sass/base/_header.sass */
+body.layout-fluid header div.block p {
+  color: white;
+  font-family: "MerriWeatherSerif", Times New Roman;
+  font-size: 1.875em ;
+  padding: 0.125em 1.4375em 0em 1.4375em ;
+  line-height: 1.25em ;
+}
+/* line 95, ../sass/base/_header.sass */
+body.layout-fluid header nav {
   display: inline-block;
   width: auto;
-  position: absolute;
-  top: 32px;
-  right: 60px;
+  margin: 2em 3.75em 0em 0em ;
+  float: right;
+  -webkit-transition: all 0.5s ease;
+  -khtml-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
-/* line 28, ../sass/base/_header.sass */
-header nav ul {
+@media all and (min-width: 768px) and (max-width: 1247px) {
+  /* line 95, ../sass/base/_header.sass */
+  body.layout-fluid header nav {
+    margin-right: 2.5em ;
+  }
+}
+@media all and (min-width: 768px) and (max-width: 1001px) {
+  /* line 95, ../sass/base/_header.sass */
+  body.layout-fluid header nav {
+    font-size: 90%;
+  }
+}
+/* line 108, ../sass/base/_header.sass */
+body.layout-fluid header nav ul {
   margin: 0;
   padding: 0;
-  display: table;
   font-size: 1.125em ;
+  list-style: none;
 }
 /* line 236, ../../../fortytwo/static/sass/theme/lib/_mixins.sass */
-header nav ul li {
+body.layout-fluid header nav ul li {
   display: inline-block;
   font-size: 100%;
 }
-/* line 33, ../sass/base/_header.sass */
-header nav ul li {
+/* line 113, ../sass/base/_header.sass */
+body.layout-fluid header nav ul li {
   padding: 0.375em 1.125em ;
-  border: 2px solid transparent;
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
   margin: 0em -0.125em ;
 }
-/* line 38, ../sass/base/_header.sass */
-header nav ul li a {
+/* line 121, ../sass/base/_header.sass */
+body.layout-fluid header nav ul li a {
   color: white;
   display: block;
 }
-/* line 42, ../sass/base/_header.sass */
-header nav ul li.active {
+/* line 125, ../sass/base/_header.sass */
+body.layout-fluid header nav ul li.active {
   -webkit-border-radius: 16px;
   -khtml-border-radius: 16px;
   -moz-border-radius: 16px;
   -ms-border-radius: 16px;
   -o-border-radius: 16px;
   border-radius: 16px;
-  border: 2px solid white;
+  border-color: white;
 }
-/* line 46, ../sass/base/_header.sass */
-header nav ul li.active a.active {
+/* line 129, ../sass/base/_header.sass */
+body.layout-fluid header nav ul li.active a.active {
   color: white;
+}
+@media all and (min-width: 0px) and (max-width: 767px) {
+  /* line 95, ../sass/base/_header.sass */
+  body.layout-fluid header nav {
+    width: 100%;
+    float: none;
+    margin-right: 0;
+    margin-top: 1.25em ;
+    font-size: 90%;
+    text-align: center;
+  }
+  /* line 140, ../sass/base/_header.sass */
+  body.layout-fluid header nav ul {
+    display: inline-block;
+  }
+  /* line 143, ../sass/base/_header.sass */
+  body.layout-fluid header nav ul li {
+    border-width: 1px;
+  }
 }
 
 /* line 1, ../sass/base/_sidebars.sass */

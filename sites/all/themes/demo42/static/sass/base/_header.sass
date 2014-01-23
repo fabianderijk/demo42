@@ -1,38 +1,121 @@
-header
-    background-image: -webkit-linear-gradient(left, rgba($orient, 0.85), rgba($orient, 0.85) ), url(../images/background-1.jpg)
-    background-image: -khtml-linear-gradient(left, rgba($orient, 0.85), rgba($orient, 0.85) ), url(../images/background-1.jpg)
-    background-image: -moz-linear-gradient(left, rgba($orient, 0.85), rgba($orient, 0.85) ), url(../images/background-1.jpg)
-    background-image: -ms-linear-gradient(left, rgba($orient, 0.85), rgba($orient, 0.85) ), url(../images/background-1.jpg)
-    background-image: -o-linear-gradient(left, rgba($orient, 0.85), rgba($orient, 0.85) ), url(../images/background-1.jpg)
-    background-image: linear-gradient( to right, rgba($orient, 0.85), rgba($orient, 0.85)  ), url(../images/background-1.jpg)
-    background-size: 100% auto
-    //+bvp( transition, height 0.5s ease, width 0.5s ease )
+body.layout-fluid header
+    $background-opacity: 0.90
+    
+    background-image: -webkit-linear-gradient(left, rgba($orient, $background-opacity), rgba($orient, $background-opacity) ), url(../images/background-1.jpg)
+    background-image: -khtml-linear-gradient(left, rgba($orient, $background-opacity), rgba($orient, $background-opacity) ), url(../images/background-1.jpg)
+    background-image: -moz-linear-gradient(left, rgba($orient, $background-opacity), rgba($orient, $background-opacity) ), url(../images/background-1.jpg)
+    background-image: -ms-linear-gradient(left, rgba($orient, $background-opacity), rgba($orient, $background-opacity) ), url(../images/background-1.jpg)
+    background-image: -o-linear-gradient(left, rgba($orient, $background-opacity), rgba($orient, $background-opacity) ), url(../images/background-1.jpg)
+    background-image: linear-gradient( to right, rgba($orient, $background-opacity), rgba($orient, $background-opacity)  ), url(../images/background-1.jpg)
+    background-size: cover
+    background-position: center
     position: relative
-
     height: 485px
 
-    // @media #{$tablet-l}
-    //     height: 335px
+    +bvp( transition, height 1s ease)
 
-    div.logo
+    @media #{$tablet-p}
+        height: 390px
+
+    @media #{$mobile}
+        height: 370px
+
+    div.logo 
         display: inline-block
-        margin: pxtoem( 20px, 0, 0, 40px ) 
+
+        @media #{$mobile-p}
+            display: block
+            padding-top: pxtoem( 10px )
+
+        a
+            display: inline-block
+            margin: pxtoem( 20px, 0, 0, 40px ) 
+            background:
+                image: url(../images/fortytwo_logo.svg)
+                size: cover
+                repeat: no-repeat
+
+            width: pxtoem(193px)
+            height: pxtoem(83px)
+
+            +bvp( transition, all 0.5s ease)
+
+            @media #{$tablet-p}
+                font-size: 90%
+
+            @media #{$mobile-l}
+                font-size: 80%
+
+            @media #{$mobile-p}
+                font-size: 80%
+                margin: 0 auto
+
+                display: block
+                background:
+                    size: contain
+                    position: center
+
+            img
+                visibility: hidden
+    
+    div.block
+        margin: 0 auto
+        text-align: center
+        +bvp( transition, font-size 0.5s ease)
+        padding-top: pxtoem( 75px )
+
+        @media #{$tablet-p}
+            font-size: 80%
+        
+        @media #{$mobile-l}
+            padding-top: pxtoem(50px)
+            font-size: 70%
+
+        @media #{$mobile-p}
+            
+            font-size: 50%
+
+        h2
+            font-size: pxtoem( 32px )
+            text-transform: uppercase
+            font-family: $MerriWeatherSerif
+            letter-spacing: pxtoem( 2px )
+            color: white
+
+            span 
+                color: $mountain-meadow
+
+        p
+            color: white
+            font-family: $MerriWeatherSerif
+            font-size: pxtoem( 30px )
+            padding: pxtoem( 2px, 23px, 0, 23px )
+            line-height: pxtoem( 20px )
 
     nav
         display: inline-block
         width: auto
-        position: absolute
-        top: 32px
-        right: 60px
+        margin: pxtoem( 32px, 60px, 0, 0)
+        float: right
+        +bvp( transition, all 0.5s ease )
+
+        @media #{$tablet}
+            margin-right: pxtoem( 40px )
+
+        @media #{$tablet-p}
+            font-size: 90%
 
         ul
             +inline-list
-            display: table
             font-size: pxtoem( 18px )
+            list-style: none
 
             li
                 padding: pxtoem( 6px, 18px )
-                border: 2px solid transparent
+                border:
+                    width: 2px
+                    style: solid
+                    color: transparent
                 margin: pxtoem( 0, -2px )
                 
                 a
@@ -41,8 +124,24 @@ header
 
                 &.active
                     +bvp( border-radius, 16px )
-                    border: 2px solid white                    
+                    border-color: white
 
                     a.active
                         color: white
+        
+        @media #{$mobile}
+            width: 100%
+            float: none
+            margin-right: 0
+            margin-top: pxtoem( 20px )
+            font-size: 90%
+            text-align: center
 
+            ul 
+                display: inline-block
+
+                li
+                    border-width: 1px
+                    // margin-top: pxtoem( 10px )
+
+                

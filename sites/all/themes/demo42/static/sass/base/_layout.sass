@@ -12,3 +12,19 @@ li.node-readmore a:after
 h1, h2, h3, h4, h5, h6
     margin: 0 0 5px 0
     font-family: $MerriWeatherSans
+
+body.show-grid div#svg-grid-background > svg rect
+    @media #{$desktop}
+        fill: rgba( $pomegranate, 0.12 )
+    
+    @media #{$tablet-l}
+        fill: rgba( $amethyst, 0.12 )
+
+    @media #{$tablet-p}
+        fill: rgba( $belizehole, 0.12 )
+
+    @media #{$mobile-l}
+        fill: rgba( $nepgritis, 0.12 )
+
+    @media #{$mobile-p}
+        fill: rgba( $sunflower, 0.12 )

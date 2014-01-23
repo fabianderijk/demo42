@@ -1,0 +1,11 @@
+// DESKTOP
+$grid-columns:      $default-grid-columns
+$grid-column-width: $default-grid-column-width
+$grid-gutter-width: $default-grid-gutter-width
+
+// No need for a media query here, 
+// this is always the base layout
+body.layout-fluid
+    header
+        div.block
+            +span-fluid-columns( 10, none )    

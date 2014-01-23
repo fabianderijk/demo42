@@ -1,0 +1,14 @@
+// MOBILE PORTRAIT
+
+$grid-columns:      8
+$grid-column-width: 27
+$grid-gutter-width: 12
+
+@media #{$mobile-p}
+    body.layout-fluid
+        header 
+            nav ul
+                +span-fluid-columns( 8, none )
+
+            div.block
+                +span-fluid-columns( 6, none )
